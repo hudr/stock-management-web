@@ -1,6 +1,7 @@
 import Router from "next/router";
 import NProgress from "nprogress";
 import { ChakraProvider } from "@chakra-ui/react";
+import AppProvider from "../hooks";
 import { theme } from "../themes";
 import "nprogress/nprogress.css";
 import "../styles/globals.css";
@@ -13,7 +14,9 @@ Router.events.on("routeChangeError", () => NProgress.done());
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
     </ChakraProvider>
   );
 }
