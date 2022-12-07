@@ -110,7 +110,11 @@ const Login = () => {
             >
               <form onSubmit={handleSubmit(handleSignIn)}>
                 <Stack spacing={4}>
-                  <FormControl id="email" isInvalid={!!errors.email?.message}>
+                  <FormControl
+                    id="email"
+                    isInvalid={!!errors.email?.message}
+                    isRequired
+                  >
                     <FormLabel>Email</FormLabel>
                     <Input
                       {...register("email")}
@@ -126,6 +130,7 @@ const Login = () => {
                   <FormControl
                     id="password"
                     isInvalid={!!errors.password?.message}
+                    isRequired
                   >
                     <FormLabel>Senha</FormLabel>
                     <InputGroup>
@@ -139,11 +144,7 @@ const Login = () => {
                           h="full"
                           variant="unstyled"
                           aria-label="Password Show/Hide"
-                          onClick={() =>
-                            setShowPassword(() =>
-                              setShowPassword(!showPassword)
-                            )
-                          }
+                          onClick={() => setShowPassword(!showPassword)}
                         >
                           {showPassword ? (
                             <ViewIcon color="#767676" fontSize="0.8rem" />
