@@ -6,8 +6,8 @@ import Card from "./card";
 
 const customTheme = {
   fonts: {
-    heading: `'Inter', sans-serif`,
-    body: `'Inter', sans-serif`,
+    heading: `'Fira Sans', sans-serif`,
+    body: `'Fira Sans', sans-serif`,
   },
   styles: {
     global: (props) => ({
