@@ -12,11 +12,11 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <ChakraProvider theme={theme}>
-      <AppProvider>
-        <Component {...pageProps} />
-      </AppProvider>
+      <AppProvider>{getLayout(<Component {...pageProps} />)}</AppProvider>
     </ChakraProvider>
   );
 }

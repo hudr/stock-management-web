@@ -1,12 +1,6 @@
 /* eslint-disable no-shadow */
-import {
-  createContext,
-  useState,
-  useContext,
-  useCallback,
-  useEffect,
-} from "react";
-import { setCookie, parseCookies, destroyCookie } from "nookies";
+import { createContext, useState, useContext, useCallback } from "react";
+import { setCookie, destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import { api } from "../services/api";
 
@@ -18,21 +12,14 @@ export const AuthProvider = ({ children }) => {
 
   const isAuthenticated = !!user;
 
-  useEffect(() => {
-    async function recoverUserInformation() {
-      const { "stock-management.token": token } = parseCookies();
-
-      if (token) {
-        const {
-          data: { user },
-        } = await api.get("/users/show");
-        setUser(user);
-      }
-    }
-
-    recoverUserInformation();
-  }, [router]);
-
+  // Nesta requisição /auth os dados do usuário estão presentes
+  // no useAuth passando o { user } assim é possível
+  // navegar na aplicação com as permissões que o usuário possui
+  // ao entrar na página de perfil uma nova requisição é feita
+  // buscando os dados atualizados desse usuário
+  // fica a critério da regra de negócio entender quando é necessário
+  // fazer uma nova requisição para pegar os dados atualizados
+  // do usuário que está navegando e executar alguma ação que dependa disso
   const signIn = useCallback(async ({ email, password }) => {
     const {
       data: { token, user },

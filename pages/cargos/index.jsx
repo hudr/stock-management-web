@@ -3,15 +3,15 @@ import { parseCookies } from "nookies";
 import { Heading } from "@chakra-ui/react";
 import { DashboardLayout } from "../../layouts";
 
-const Dashboard = () => {
+const Roles = () => {
   return (
     <>
       <Head>
-        <title>Painel</title>
+        <title>Cargos</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Heading fontSize="3xl">Painel</Heading>
+      <Heading fontSize="3xl">Cargos</Heading>
     </>
   );
 };
@@ -33,8 +33,8 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-Dashboard.getLayout = function getLayout(page) {
+Roles.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export default Dashboard;
+export default Roles;
