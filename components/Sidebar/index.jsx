@@ -32,7 +32,7 @@ const LinkItems = [
   { name: "Cargos", icon: FiLayers, href: "/cargos" },
 ];
 
-export default function Sidebar({ pageContent }) {
+export default function Sidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { signOut } = useAuth();
   return (
@@ -58,7 +58,7 @@ export default function Sidebar({ pageContent }) {
       {/* mobilenav */}
       <MobileNav display={{ base: "flex", lg: "none" }} onOpen={onOpen} />
       <Box ml={{ base: 0, lg: 60 }} p="4">
-        {pageContent}
+        {children}
       </Box>
     </Box>
   );
